@@ -216,7 +216,7 @@
       if (!this._stickyCards.length) return;
 
       const vh = window.innerHeight;
-      const stickyThreshold = 95;
+      const stickyThreshold = 78;
 
       this._stickyCards.forEach(({ el, index, total }) => {
         const rect = el.getBoundingClientRect();
