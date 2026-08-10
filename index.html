@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Başlık ve Meta Etiketleri -->
+    <title>Web Samsun Tasarım | Webbeyaz Güvencesiyle Kurumsal Web Çözümleri</title>
+    <meta name="description"
+        content="Web Samsun Tasarım, Webbeyaz alt kuruluşu olarak markanıza özel, hızlı, SEO uyumlu ve premium web tasarım, e-ticaret ve dijital pazarlama çözümleri sunar.">
+    <meta name="keywords"
+        content="web samsun tasarım, samsun web tasarım, web tasarım samsun, samsun e-ticaret, samsun seo, webbeyaz, kurumsal web tasarım">
+
+    <!-- Open Graph (Sosyal Medya) Meta Verileri -->
+    <meta property="og:title" content="Web Samsun Tasarım | Webbeyaz Güvencesiyle Kurumsal Web Çözümleri">
+    <meta property="og:description"
+        content="Markanıza özel, hızlı ve SEO uyumlu web siteleri. Webbeyaz güvencesi ve 10+ yıllık deneyimiyle Samsun'da dijital dönüşüm ortağınız.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://samsunwebtasarim.com">
+    <meta property="og:image" content="https://samsunwebtasarim.com/assets/img/og-share.jpg">
+
+    <!-- Google Fonts & Bootstrap Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Ana CSS Dosyası -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Scroll Motion Animasyon Stilleri -->
+    <link rel="stylesheet" href="assets/css/scroll-motion.css">
+</head>
+
+<body class="dark-theme">
+
+    <!-- Hamburger Menü & Mobil Navigasyon -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu-content">
+            <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Menüyü Kapat">
+                <i class="bi bi-x-lg"></i>
+            </button>
+            <nav class="mobile-nav">
+                <a href="#hero" class="mobile-nav-link">Anasayfa</a>
+                <a href="#services" class="mobile-nav-link">Hizmetlerimiz</a>
+                <a href="#why-us" class="mobile-nav-link">Neden Biz?</a>
+                <a href="#wizard-section" class="mobile-nav-link">Teklif Sihirbazı</a>
+                <a href="#process" class="mobile-nav-link">Süreç</a>
+                <a href="#faq" class="mobile-nav-link">S.S.S.</a>
+                <a href="#contact" class="mobile-nav-link">İletişim</a>
+            </nav>
+            <div class="mobile-menu-footer">
+                <p>Bir <a href="https://webbeyaz.com" target="_blank" rel="noopener">Webbeyaz</a> İştirakidir.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="#" aria-label="Linkedin"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigasyon -->
+    <header class="site-header" id="siteHeader">
+        <div class="container header-container">
+            <a href="#hero" class="site-logo" id="siteLogo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 100 100" class="logo-svg">
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#ef4444" />
+                                <stop offset="100%" stop-color="#4f46e5" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Stylized W & S for Web Samsun Tasarım -->
+                        <path d="M15,25 L35,75 L50,45 L65,75 L85,25" fill="none" stroke="url(#logoGrad)"
+                            stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="50" cy="20" r="8" fill="#ef4444" />
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="brand-main">web<span class="highlight">tasarım</span>samsun</span>
+                    <span class="brand-sub">webbeyaz iştirakidir</span>
+                </div>
+            </a>
+
+            <!-- Masaüstü Navigasyon -->
+            <nav class="desktop-nav" aria-label="Ana Menü">
+                <a href="#hero" class="nav-link">Anasayfa</a>
+                <a href="#services" class="nav-link">Hizmetler</a>
+                <a href="#why-us" class="nav-link">Neden Biz?</a>
+                <a href="#wizard-section" class="nav-link">Teklif Sihirbazı</a>
+                <a href="#process" class="nav-link">Süreç</a>
+                <a href="#faq" class="nav-link">S.S.S.</a>
+                <a href="#contact" class="nav-link">İletişim</a>
+            </nav>
+
+            <div class="header-actions">
+                <!-- Tema Değiştirici -->
+                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Tema Değiştir">
+                    <i class="bi bi-sun-fill sun-icon"></i>
+                    <i class="bi bi-moon-fill moon-icon"></i>
+                </button>
+
+                <!-- Hızlı İletişim Butonu -->
+                <a href="#wizard-section" class="btn-action d-desktop">Teklif Al <i class="bi bi-magic"></i></a>
+
+                <!-- Mobil Menü Butonu -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menüyü Aç">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="mesh-gradient" data-parallax="0.1"></div>
+            <div class="container hero-container">
+                <div class="hero-text-content" data-scroll="fade-up">
+                    <div class="badge-webbeyaz">
+                        <span class="badge-dot"></span>
+                        Webbeyaz Deneyimi & Güvencesiyle
+                    </div>
+                    <h1 class="hero-heading" style="font-size: clamp(2.2rem, 5vw, 72px); margin-bottom: 1.25rem; max-width: 900px; line-height: 1.05;">
+                        Samsun'da İşinizi Dijitalin Zirvesine Taşıyoruz
+                    </h1>
+                    <p class="hero-subtitle" style="margin-bottom: 2rem;">
+                        Hazır şablonlara sıkışıp kalmayın. Web Samsun Tasarım ile markanıza özel, ultra hızlı, SEO
+                        uyumlu ve dönüşüm odaklı dijital projeler üretiyoruz.
+                    </p>
+                    <div class="hero-actions" style="margin-bottom: 2.5rem;">
+                        <a href="#wizard-section" class="btn-magnet">Teklif Sihirbazı <i
+                                class="bi bi-arrow-right-short" style="margin-left: 6px;"></i></a>
+                        <a href="#services" class="btn-secondary">Hizmetlerimizi İncele</a>
+                    </div>
+                    <div class="hero-stats" data-scroll-group data-scroll-stagger="100">
+                        <div class="stat-item">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Yıllık Tecrübe</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">250+</span>
+                            <span class="stat-label">Başarılı Proje</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">%99</span>
+                            <span class="stat-label">Müşteri Memnuniyeti</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-graphic" data-scroll="scale" data-parallax="0.08">
+                    <div class="hero-card-wrapper">
+                        <!-- Premium Interactive CSS Card mockups -->
+                        <div class="hero-card main-card">
+                            <div class="card-header">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                                <div class="mock-url"><i class="bi bi-lock-fill"></i> samsunwebtasarim.com</div>
+                            </div>
+                            <div class="mock-video-wrapper">
+                                <iframe src="https://www.youtube.com/embed/JXsX2YVqg14?autoplay=1&mute=1&loop=1&playlist=JXsX2YVqg14&controls=0&modestbranding=1&rel=0" 
+                                        title="Web Samsun Tasarım Tanıtım Video" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+
+                        <div class="hero-card floating-card chat-card">
+                            <div class="chat-header">
+                                <div class="chat-avatar"><i class="bi bi-lightning-charge-fill"></i></div>
+                                <div>
+                                    <div class="chat-name">Yapay Zekâ SEO (GEO)</div>
+                                    <div class="chat-status">Aktif & Optimize</div>
+                                </div>
+                            </div>
+                            <div class="chat-bubble">ChatGPT ve Gemini görünürlüğünüz en üst düzeyde!</div>
+                        </div>
+
+                        <div class="hero-card floating-card performance-card">
+                            <div class="perf-metric">
+                                <span class="perf-label">Hız Skoru</span>
+                                <span class="perf-value">100</span>
+                            </div>
+                            <div class="perf-bar-wrapper">
+                                <div class="perf-bar-fill"></div>
+                            </div>
+                            <span class="perf-sub text-green"><i class="bi bi-check-circle-fill"></i> Core Web Vitals
+                                Geçti</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wave Divider -->
+            <div class="wave-divider">
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                    preserveAspectRatio="none">
+                    <path
+                        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C26.9,8.75,57.05,18.3,84.66,23.55,149,35.84,217.15,67.24,321.39,56.44Z"
+                        class="shape-fill"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Webbeyaz Trust Ribbon -->
+        <section class="trust-ribbon">
+            <div class="container ribbon-container">
+                <p class="ribbon-text">
+                    Samsun'un Güvenilir Dijital Ajansı <strong>Webbeyaz.com</strong> Alt Kuruluşuyuz
+                </p>
+                <div class="ribbon-badges">
+                    <span class="ribbon-badge-item"><i class="bi bi-shield-check"></i> 10+ Yıllık Webbeyaz
+                        Altyapısı</span>
+                    <span class="ribbon-badge-item"><i class="bi bi-people"></i> Samsun Borkonut Niş Plaza'da Yerel
+                        Destek</span>
+                    <span class="ribbon-badge-item"><i class="bi bi-headset"></i> 7/24 Kesintisiz Sunucu Takibi</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marquee Showcase Section (Dual Horizontal Scroll) -->
+        <section class="marquee-section" id="marquee-showcase">
+            <div class="marquee-row-wrapper">
+                <!-- Row 1 (scrolling right on scroll) -->
+                <div class="marquee-row marquee-row-1">
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif" alt="Showcase" loading="lazy"></div>
+                    <!-- Tripled tiles for seamless continuous scrolling -->
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif" alt="Showcase" loading="lazy"></div>
+                </div>
+
+                <!-- Row 2 (scrolling left on scroll) -->
+                <div class="marquee-row marquee-row-2">
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif" alt="Showcase" loading="lazy"></div>
+                    <!-- Tripled tiles for seamless continuous scrolling -->
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif" alt="Showcase" loading="lazy"></div>
+                    <div class="marquee-tile"><img src="https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif" alt="Showcase" loading="lazy"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section with Character-by-Character Scroll Reveal -->
+        <section class="about-section-motion" id="about-motion">
+            <!-- 4 Corner Decorative 3D Floating Images -->
+            <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png" class="deco-3d-icon deco-top-left" data-parallax="0.15" alt="3D Deco Moon">
+            <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png" class="deco-3d-icon deco-bottom-left" data-parallax="0.2" alt="3D Deco Object">
+            <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png" class="deco-3d-icon deco-top-right" data-parallax="0.12" alt="3D Deco Lego">
+            <img src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png" class="deco-3d-icon deco-bottom-right" data-parallax="0.18" alt="3D Deco Group">
+
+            <h2 class="hero-heading" style="font-size: clamp(2.8rem, 9vw, 130px);">Vizyonumuz</h2>
+            
+            <p class="char-reveal-paragraph">
+                10 yılı aşkın tecrübemizle markanız için özgün, ultra hızlı, SEO uyumlu ve dönüşüm odaklı web projeleri tasarlıyoruz. Samsun'da ve Türkiye çapında dijital dönüşümün öncüsü olmak için buradayız. Birlikte harika bir iş çıkaralım!
+            </p>
+
+            <a href="#wizard-section" class="btn-magnet">İletişime Geçin</a>
+        </section>
+
+        <!-- Numbered Minimalist Services Section (01 - 05) -->
+        <section class="services-section-motion" id="services">
+            <h2 class="services-motion-heading">Hizmetlerimiz</h2>
+
+            <div class="container" style="max-width: 1000px;">
+                <!-- 01 -->
+                <div class="service-numbered-item" data-scroll="fade-up">
+                    <div class="service-number">01</div>
+                    <div class="service-content-col">
+                        <h3 class="service-item-name">Kurumsal Web Tasarım</h3>
+                        <p class="service-item-desc">Markanızın prestijini artıran, yüksek hızlı, tamamen size özel olarak kodlanmış, mobil uyumlu ve kolay yönetim panelli kurumsal web siteleri.</p>
+                    </div>
+                </div>
+
+                <!-- 02 -->
+                <div class="service-numbered-item" data-scroll="fade-up">
+                    <div class="service-number">02</div>
+                    <div class="service-content-col">
+                        <h3 class="service-item-name">E-Ticaret Sistemleri</h3>
+                        <p class="service-item-desc">Güvenli ödeme altyapıları, gelişmiş sipariş ve stok yönetim paneli ile pazaryeri entegrasyonlarıyla donatılmış satış odaklı online mağazalar.</p>
+                    </div>
+                </div>
+
+                <!-- 03 -->
+                <div class="service-numbered-item" data-scroll="fade-up">
+                    <div class="service-number">03</div>
+                    <div class="service-content-col">
+                        <h3 class="service-item-name">SEO & Yapay Zekâ Görünürlüğü (GEO/AEO)</h3>
+                        <p class="service-item-desc">Sadece Google değil; ChatGPT, Gemini ve Claude gibi üretken yapay zekâ motorlarında markanızın en üstte görünmesini sağlayan modern optimizasyon.</p>
+                    </div>
+                </div>
+
+                <!-- 04 -->
+                <div class="service-numbered-item" data-scroll="fade-up">
+                    <div class="service-number">04</div>
+                    <div class="service-content-col">
+                        <h3 class="service-item-name">Kurumsal Kimlik & UI/UX Tasarım</h3>
+                        <p class="service-item-desc">Dijital ve fiziksel mecralarda markanızı profesyonelce temsil edecek logo, kurumsal kimlik rehberi, özel kullanıcı arayüzü ve deneyimi tasarımları.</p>
+                    </div>
+                </div>
+
+                <!-- 05 -->
+                <div class="service-numbered-item" data-scroll="fade-up">
+                    <div class="service-number">05</div>
+                    <div class="service-content-col">
+                        <h3 class="service-item-name">Özel Web Yazılımları & API Entegrasyonu</h3>
+                        <p class="service-item-desc">Şirketinize özel dinamik web uygulamaları, CRM/ERP sistem entegrasyonları ve yüksek performanslı bulut veritabanı altyapıları.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sticky Stacking Projects Showcase Section -->
+        <section class="projects-stack-section" id="projects-showcase">
+            <div class="text-center" style="margin-bottom: 4rem;">
+                <h2 class="hero-heading" style="font-size: clamp(2.8rem, 9vw, 130px);">Projelerimiz</h2>
+            </div>
+
+            <div class="sticky-stack-container" id="projectsContainer">
+                <!-- Project 01 -->
+                <div class="sticky-project-card">
+                    <div class="card-top-row">
+                        <div class="d-flex align-items-center gap-3">
+                            <span class="card-number-badge">01</span>
+                            <div class="card-title-group">
+                                <span class="card-category">Müşteri Projesi • E-Ticaret & Web App</span>
+                                <h3 class="card-project-name">Nextlevel Studio</h3>
+                            </div>
+                        </div>
+                        <a href="#wizard-section" class="btn-live-project">Projeyi İncele <i class="bi bi-arrow-up-right"></i></a>
+                    </div>
+                    <div class="card-grid-images">
+                        <div class="col-left-stacked">
+                            <div class="card-img-box img-left-top">
+                                <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85" alt="Nextlevel Studio Top Mockup">
+                            </div>
+                            <div class="card-img-box img-left-bottom">
+                                <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85" alt="Nextlevel Studio Bottom Mockup">
+                            </div>
+                        </div>
+                        <div class="card-img-box img-right-tall">
+                            <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85" alt="Nextlevel Studio Main Mockup">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 02 -->
+                <div class="sticky-project-card">
+                    <div class="card-top-row">
+                        <div class="d-flex align-items-center gap-3">
+                            <span class="card-number-badge">02</span>
+                            <div class="card-title-group">
+                                <span class="card-category">Ajans Projesi • Kurumsal & UI/UX</span>
+                                <h3 class="card-project-name">Aura Brand Identity</h3>
+                            </div>
+                        </div>
+                        <a href="#wizard-section" class="btn-live-project">Projeyi İncele <i class="bi bi-arrow-up-right"></i></a>
+                    </div>
+                    <div class="card-grid-images">
+                        <div class="col-left-stacked">
+                            <div class="card-img-box img-left-top">
+                                <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85" alt="Aura Brand Top Mockup">
+                            </div>
+                            <div class="card-img-box img-left-bottom">
+                                <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&w=1280&q=85" alt="Aura Brand Bottom Mockup">
+                            </div>
+                        </div>
+                        <div class="card-img-box img-right-tall">
+                            <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85" alt="Aura Brand Main Mockup">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 03 -->
+                <div class="sticky-project-card">
+                    <div class="card-top-row">
+                        <div class="d-flex align-items-center gap-3">
+                            <span class="card-number-badge">03</span>
+                            <div class="card-title-group">
+                                <span class="card-category">Özel Proje • SEO & Dijital Dönüşüm</span>
+                                <h3 class="card-project-name">Solaris Digital</h3>
+                            </div>
+                        </div>
+                        <a href="#wizard-section" class="btn-live-project">Projeyi İncele <i class="bi bi-arrow-up-right"></i></a>
+                    </div>
+                    <div class="card-grid-images">
+                        <div class="col-left-stacked">
+                            <div class="card-img-box img-left-top">
+                                <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85" alt="Solaris Digital Top Mockup">
+                            </div>
+                            <div class="card-img-box img-left-bottom">
+                                <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85" alt="Solaris Digital Bottom Mockup">
+                            </div>
+                        </div>
+                        <div class="card-img-box img-right-tall">
+                            <img src="https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&w=1280&q=85" alt="Solaris Digital Main Mockup">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="why-us-section" id="why-us">
+            <div class="container why-us-container">
+                <div class="why-us-image-side" data-scroll="slide-right">
+                    <div class="gradient-border-box">
+                        <div class="inner-content">
+                            <h3>Neden Web Samsun Tasarım?</h3>
+                            <p>Biz sadece kod yazmıyoruz, işletmenizin büyüme stratejisini dijital ortama yansıtıyoruz.
+                            </p>
+
+                            <div class="feature-item-list">
+                                <div class="feature-small-item">
+                                    <div class="feature-small-icon"><i class="bi bi-lightning-charge"></i></div>
+                                    <div>
+                                        <h4>Ultra Hızlı Siteler</h4>
+                                        <p>Sayfalarınız milisaniyeler içinde açılsın, ziyaretçilerinizi kaybetmeyin.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-small-item">
+                                    <div class="feature-small-icon"><i class="bi bi-phone"></i></div>
+                                    <div>
+                                        <h4>%100 Responsive</h4>
+                                        <p>Mobil cihazlar, tabletler ve tüm ekranlarda kusursuz görünüm.</p>
+                                    </div>
+                                </div>
+                                <div class="feature-small-item">
+                                    <div class="feature-small-icon"><i class="bi bi-shield-lock"></i></div>
+                                    <div>
+                                        <h4>Maksimum Güvenlik</h4>
+                                        <p>SSL sertifikası, DDoS koruması ve düzenli güvenlik yedeklemeleri.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="why-us-text-side" data-scroll="fade-up">
+                    <span class="section-subtitle text-left">Farkımız Nedir?</span>
+                    <h2 class="section-title text-left">Samsun'da Dijital Başarınız İçin Yanınızdayız</h2>
+                    <p class="section-description text-left">
+                        Biz, hazır şablon siteleri müşterilerine sunan sıradan ajanslardan değiliz. Web Samsun Tasarım
+                        olarak her projeye sıfırdan başlar, sektörel analizinizi yapar ve rakiplerinizin önüne geçmenizi
+                        sağlayacak dijital stratejiyi kurarız.
+                    </p>
+
+                    <div class="why-us-grids">
+                        <div class="why-card">
+                            <div class="why-icon"><i class="bi bi-file-earmark-code"></i></div>
+                            <h4>Temiz & Modern Kodlama</h4>
+                            <p>Arama motorlarının sevdiği, hata içermeyen, optimize edilmiş kod yapısı.</p>
+                        </div>
+                        <div class="why-card">
+                            <div class="why-icon"><i class="bi bi-chat-heart"></i></div>
+                            <h4>Süreç Boyunca Birlikteyiz</h4>
+                            <p>İlk toplantıdan yayına, yayın sonrasındaki destek taleplerinize kadar Samsun'da birebir
+                                iletişim.</p>
+                        </div>
+                        <div class="why-card">
+                            <div class="why-icon"><i class="bi bi-window-sidebar"></i></div>
+                            <h4>Kolay Kullanım Paneli</h4>
+                            <p>Sitenizdeki yazıları, resimleri ve ürünleri kimseye bağlı kalmadan kolayca güncelleyin.
+                            </p>
+                        </div>
+                        <div class="why-card">
+                            <div class="why-icon"><i class="bi bi-bezier2"></i></div>
+                            <h4>Webbeyaz Güvencesi</h4>
+                            <p>Samsun'da 10 yılı aşkın süredir yüzlerce müşteriye hizmet veren Webbeyaz markasının
+                                kalitesiyle.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Quote Wizard Section -->
+        <section class="wizard-section" id="wizard-section" data-scroll="fade-up">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="section-subtitle">Saniyeler İçinde Teklif Alın</span>
+                    <h2 class="section-title">İnteraktif Proje Teklif Sihirbazı</h2>
+                    <p class="section-description text-center">
+                        İhtiyaçlarınızı belirleyin, projenizin kapsamını ve tahmini bütçe/süre detaylarını anında görün!
+                    </p>
+                </div>
+
+                <div class="wizard-wrapper">
+                    <!-- Progress Bar -->
+                    <div class="wizard-progress-container">
+                        <div class="wizard-progress-bar" id="wizardProgressBar"></div>
+                        <div class="wizard-steps-indicators">
+                            <div class="step-indicator active" data-step="1">1<span class="indicator-label">Proje
+                                    Türü</span></div>
+                            <div class="step-indicator" data-step="2">2<span class="indicator-label">Tasarım &
+                                    SEO</span></div>
+                            <div class="step-indicator" data-step="3">3<span class="indicator-label">Kapsam</span></div>
+                            <div class="step-indicator" data-step="4">4<span class="indicator-label">İletişim</span>
+                            </div>
+                            <div class="step-indicator" data-step="5">5<span class="indicator-label">Sonuç</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Wizard Form Container -->
+                    <div class="wizard-card" id="wizardCard">
+
+                        <!-- STEP 1: Project Type -->
+                        <div class="wizard-step active" id="step1">
+                            <h3 class="step-title">Ne Tür Bir Web Sitesine İhtiyacınız Var?</h3>
+                            <p class="step-subtitle">İşletmenizin hedeflerine en uygun proje tipini seçin.</p>
+
+                            <div class="options-grid">
+                                <label class="wizard-option-card">
+                                    <input type="radio" name="projectType" value="corporate" checked>
+                                    <div class="option-content">
+                                        <div class="option-icon"><i class="bi bi-buildings"></i></div>
+                                        <div class="option-title">Kurumsal Web Sitesi</div>
+                                        <div class="option-desc">Hizmetlerinizi tanıtan, prestij odaklı ve modern
+                                            tanıtım sitesi.</div>
+                                    </div>
+                                </label>
+
+                                <label class="wizard-option-card">
+                                    <input type="radio" name="projectType" value="ecommerce">
+                                    <div class="option-content">
+                                        <div class="option-icon"><i class="bi bi-cart3"></i></div>
+                                        <div class="option-title">E-Ticaret Sitesi</div>
+                                        <div class="option-desc">Ödeme entegrasyonlu, stok takipli online satış
+                                            mağazası.</div>
+                                    </div>
+                                </label>
+
+                                <label class="wizard-option-card">
+                                    <input type="radio" name="projectType" value="landing">
+                                    <div class="option-content">
+                                        <div class="option-icon"><i class="bi bi-file-earmark-check"></i></div>
+                                        <div class="option-title">Tek Sayfa (Landing Page)</div>
+                                        <div class="option-desc">Tek bir ürün, hizmet veya reklam kampanyası için
+                                            odaklanmış sayfa.</div>
+                                    </div>
+                                </label>
+
+                                <label class="wizard-option-card">
+                                    <input type="radio" name="projectType" value="custom">
+                                    <div class="option-content">
+                                        <div class="option-icon"><i class="bi bi-code-slash"></i></div>
+                                        <div class="option-title">Özel Web Yazılımı</div>
+                                        <div class="option-desc">B2B, CRM, stok takip veya özel iş akışlarınıza uygun
+                                            sistemler.</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- STEP 2: Options/Extras -->
+                        <div class="wizard-step" id="step2">
+                            <h3 class="step-title">Projenize Eklemek İstediğiniz Özellikler</h3>
+                            <p class="step-subtitle">Web sitenizin başarısını artıracak ek hizmetleri seçebilirsiniz
+                                (Birden fazla seçilebilir).</p>
+
+                            <div class="options-grid">
+                                <label class="wizard-option-card checkbox">
+                                    <input type="checkbox" name="extras" value="custom-design">
+                                    <div class="option-content">
+                                        <div class="option-icon"><i class="bi bi-palette"></i></div>
+                                        <div class="option-title">Özgün UI/UX Tasarım</div>
+                                        <div class="option-desc">Hazır şablonlar yerine, tasarımcımızın markanıza özel
+                                            çizeceği arayüz.</div>
+                                    </div>
+                                </label>
+
+                                <label class="wizard-option-card checkbox">
+                                    <input type="checkbox" name="extras" value="advanced-seo">
+                                    <div class="option-content">
+                                        <div class="option-icon"><i class="bi bi-search"></i></div>
+                                        <div class="option-title">Profesyonel SEO & GEO</div>
+                                        <div class="option-desc">Google aramalarında ve yapay zekâ yanıtlarında üst
+                                            sırada yer alma çalışması.</div>
+                                    </div>
+                                </label>
+
+                                <label class="wizard-option-card checkbox">
+                                    <input type="checkbox" name="extras" value="logo-branding">
+                                    <div class="option-content">
+                                        <div class="option-icon"><i class="bi bi-award"></i></div>
+                                        <div class="option-title">Logo & Kurumsal Kimlik</div>
+                                        <div class="option-desc">Markanıza ait yeni logo tasarımı, kartvizit, antetli
+                                            kağıt çalışmaları.</div>
+                                    </div>
+                                </label>
+
+                                <label class="wizard-option-card checkbox">
+                                    <input type="checkbox" name="extras" value="multilang">
+                                    <div class="option-content">
+                                        <div class="option-icon"><i class="bi bi-translate"></i></div>
+                                        <div class="option-title">Çoklu Dil Desteği</div>
+                                        <div class="option-desc">İngilizce, Almanca veya farklı dillerde dil seçeneği ve
+                                            içerik altyapısı.</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3: Scale/Pages -->
+                        <div class="wizard-step" id="step3">
+                            <h3 class="step-title">Sitenizin Tahmini Sayfa Sayısı veya Kapsamı</h3>
+                            <p class="step-subtitle">Projenizin büyüklüğünü belirlemek için en uygun seçeneği
+                                işaretleyin.</p>
+
+                            <div class="options-grid">
+                                <label class="wizard-option-card">
+                                    <input type="radio" name="projectScale" value="onesingle">
+                                    <div class="option-content">
+                                        <div class="option-icon text-small">1</div>
+                                        <div class="option-title">Tek Sayfa (Landing)</div>
+                                        <div class="option-desc">Tüm içeriğin tek bir ana sayfada sunulduğu hızlı yapı.
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <label class="wizard-option-card">
+                                    <input type="radio" name="projectScale" value="small" checked>
+                                    <div class="option-content">
+                                        <div class="option-icon text-small">2-5</div>
+                                        <div class="option-title">Standart Kapsam (2-5 Sayfa)</div>
+                                        <div class="option-desc">Anasayfa, Hakkımızda, Hizmetler, İletişim gibi temel
+                                            sayfalar.</div>
+                                    </div>
+                                </label>
+
+                                <label class="wizard-option-card">
+                                    <input type="radio" name="projectScale" value="medium">
+                                    <div class="option-content">
+                                        <div class="option-icon text-small">5-15</div>
+                                        <div class="option-title">Orta Kapsam (5-15 Sayfa)</div>
+                                        <div class="option-desc">Detaylı hizmet sayfaları, referanslar galerisi ve blog
+                                            yapısı.</div>
+                                    </div>
+                                </label>
+
+                                <label class="wizard-option-card">
+                                    <input type="radio" name="projectScale" value="large">
+                                    <div class="option-content">
+                                        <div class="option-icon text-small">15+</div>
+                                        <div class="option-title">Geniş Kapsam (15+ Sayfa)</div>
+                                        <div class="option-desc">Kapsamlı ürün katalogları, dinamik içerik yapıları,
+                                            üyelik sistemleri.</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- STEP 4: Contact Form -->
+                        <div class="wizard-step" id="step4">
+                            <h3 class="step-title">Teklifi Alabilmeniz İçin İletişim Bilgileriniz</h3>
+                            <p class="step-subtitle">Size özel hazırlayacağımız detaylı teklif raporunu iletmemiz için
+                                bilgilerinizi girin.</p>
+
+                            <div class="wizard-form-grid">
+                                <div class="form-group">
+                                    <label for="wizName">Adınız Soyadınız / Firma Adınız *</label>
+                                    <input type="text" id="wizName" required
+                                        placeholder="Örn: Ahmet Yılmaz / Webbeyaz A.Ş.">
+                                </div>
+                                <div class="form-group">
+                                    <label for="wizPhone">Telefon Numaranız *</label>
+                                    <input type="tel" id="wizPhone" required placeholder="Örn: 0555 555 55 55"
+                                        maxlength="14" minlength="11"
+                                        pattern="([0-9]{11}|[0-9]{4} [0-9]{3} [0-9]{2} [0-9]{2})"
+                                        title="Telefon numarası 11 haneli olmalıdır (örn: 0555 555 55 55)">
+                                </div>
+                                <div class="form-group col-full">
+                                    <label for="wizEmail">E-Posta Adresiniz *</label>
+                                    <input type="email" id="wizEmail" required placeholder="Örn: ahmet@firma.com">
+                                </div>
+                                <div class="form-group col-full">
+                                    <label for="wizNotes">Proje Hakkında Ek Notlarınız (Varsa)</label>
+                                    <textarea id="wizNotes" rows="3"
+                                        placeholder="Projenizle ilgili özel isteklerinizi veya hedeflerinizi belirtebilirsiniz..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- STEP 5: Result & Estimate -->
+                        <div class="wizard-step" id="step5">
+                            <div class="result-success-animation">
+                                <i class="bi bi-check-circle-fill"></i>
+                            </div>
+                            <h3 class="step-title">Harika! Projeniz İçin Teklif Hesaplandı</h3>
+                            <p class="step-subtitle">Seçtiğiniz kriterlere göre tahmini proje kapsam raporu aşağıdadır.
+                            </p>
+
+                            <div class="result-summary-box">
+                                <div class="summary-item">
+                                    <span class="label">Proje Türü:</span>
+                                    <span class="value" id="resProjectType">Kurumsal Web Sitesi</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="label">Sayfa / Kapsam:</span>
+                                    <span class="value" id="resScale">2-5 Sayfa</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="label">Seçilen Ekstralar:</span>
+                                    <span class="value" id="resExtras">Yok</span>
+                                </div>
+                                <div class="summary-item main-metric">
+                                    <span class="label">Tahmini Teslim Süresi:</span>
+                                    <span class="value highlight-text" id="resDuration">7-10 İş Günü</span>
+                                </div>
+                                <div class="summary-item price-metric">
+                                    <span class="label">Tahmini Proje Bütçesi:</span>
+                                    <span class="value price-text" id="resPrice">Teklif Oluşturuluyor...</span>
+                                </div>
+                            </div>
+                            <p class="summary-disclaimer">
+                                * Bu teklif tahmini olup, nihai fiyatlandırma karşılıklı toplantı ve analiz sonrasında
+                                netleşecektir. Samsun Borkonut Niş Plaza'daki ofisimizde sizi çaya bekleriz.
+                            </p>
+                        </div>
+
+                        <!-- Navigation Buttons inside Card -->
+                        <div class="wizard-footer">
+                            <button type="button" class="btn-prev" id="wizPrevBtn" disabled><i
+                                    class="bi bi-chevron-left"></i> Geri</button>
+                            <button type="button" class="btn-next" id="wizNextBtn">Devam Et <i
+                                    class="bi bi-chevron-right"></i></button>
+                            <button type="button" class="btn-submit" id="wizSubmitBtn" style="display: none;">Teklifi
+                                Gönder ve İletişime Geç <i class="bi bi-send"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process-section" id="process">
+            <div class="container">
+                <div class="section-header text-center" data-scroll="fade-up">
+                    <span class="section-subtitle">Nasıl Çalışıyoruz?</span>
+                    <h2 class="section-title">4 Adımda Dijital Yolculuk</h2>
+                    <p class="section-description">
+                        Projenizi başından sonuna kadar şeffaf, planlı ve profesyonel bir süreç yönetimiyle hayata
+                        geçiriyoruz.
+                    </p>
+                </div>
+
+                <div class="process-timeline" data-scroll-group data-scroll-stagger="120">
+                    <!-- Step 1 -->
+                    <div class="process-step-item">
+                        <div class="process-number">01</div>
+                        <div class="process-content">
+                            <h3 class="process-title">Keşif ve Strateji</h3>
+                            <p class="process-text">
+                                Samsun'daki ofisimizde veya online toplantıda sizi dinliyor, hedeflerinizi, sektörünüzü
+                                ve rakiplerinizi analiz ederek projeyi planlıyoruz.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="process-step-item">
+                        <div class="process-number">02</div>
+                        <div class="process-content">
+                            <h3 class="process-title">Özel Arayüz Tasarımı</h3>
+                            <p class="process-text">
+                                Marka kimliğinize uygun, kullanıcı deneyimi (UX) öncelikli ve sadece size özel web
+                                sitesi arayüz tasarımlarını çizip onayınıza sunuyoruz.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="process-step-item">
+                        <div class="process-number">03</div>
+                        <div class="process-content">
+                            <h3 class="process-title">Kodlama ve Optimizasyon</h3>
+                            <p class="process-text">
+                                Onaylanan tasarımı modern frontend teknolojileriyle kodluyor, yönetim panelini entegre
+                                ediyor ve en yüksek hız için optimize ediyoruz.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="process-step-item">
+                        <div class="process-number">04</div>
+                        <div class="process-content">
+                            <h3 class="process-title">Test, Yayın ve Destek</h3>
+                            <p class="process-text">
+                                Hız, SEO ve tarayıcı testlerini tamamlayarak sitenizi yayına alıyoruz. Webbeyaz
+                                güvencesiyle 1 yıl boyunca ücretsiz teknik destek sunuyoruz.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faq">
+            <div class="container">
+                <div class="section-header text-center" data-scroll="fade-up">
+                    <span class="section-subtitle">Aklınıza Takılanlar</span>
+                    <h2 class="section-title">Sıkça Sorulan Sorular</h2>
+                    <p class="section-description">
+                        Web tasarım süreçlerimiz ve hizmetlerimizle ilgili en çok merak edilen soruları yanıtladık.
+                    </p>
+                </div>
+
+                <div class="faq-accordion" id="faqAccordion" data-scroll-group data-scroll-stagger="100">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Web Samsun Tasarım'ın Webbeyaz ile ilişkisi nedir?</span>
+                            <span class="faq-icon"><i class="bi bi-chevron-down"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>
+                                Web Samsun Tasarım (samsunwebtasarim.com), Samsun'da 10 yılı aşkın süredir dijital medya
+                                hizmetleri veren köklü **Webbeyaz İnternet Hizmetleri** firmasının tescilli bir alt
+                                kuruluşudur. Alacağınız tüm hizmetler, faturalandırma ve sunucu altyapıları tamamen
+                                Webbeyaz güvencesi ve kadrosuyla sağlanmaktadır.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Bir web sitesinin tasarımı ortalama ne kadar sürer?</span>
+                            <span class="faq-icon"><i class="bi bi-chevron-down"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>
+                                Proje süresi sitenin kapsamına göre değişiklik gösterir. Tek sayfalık (Landing Page)
+                                tasarımlar ortalama 3-5 iş gününde tamamlanırken, standart kurumsal siteler 7-12 iş
+                                günü, kapsamlı e-ticaret siteleri ve özel yazılımlar ise 15-30 iş günü arasında yayına
+                                hazır hale getirilmektedir.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Hazır şablon mu kullanıyorsunuz yoksa özel kodlama mı?</span>
+                            <span class="faq-icon"><i class="bi bi-chevron-down"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>
+                                Biz hazır, kopyalanmış temalar kullanmıyoruz. Her işletmenin vizyonu farklıdır. Bu
+                                yüzden tasarımlarımızı tamamen özgün olarak çiziyor ve arama motoru standartlarına (hız,
+                                temiz kod, SEO) en uygun şekilde sıfırdan kodluyoruz. Bu sayede siteleriniz hem çok
+                                hızlı açılır hem de arama motorlarında daha hızlı yükselir.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Web sitesini teslim aldıktan sonra kendim güncelleyebilir miyim?</span>
+                            <span class="faq-icon"><i class="bi bi-chevron-down"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>
+                                Evet. Teslim ettiğimiz tüm web sitelerinde kullanıcı dostu ve Türkçe yönetim panelleri
+                                bulunmaktadır. Sitenizdeki tüm içerikleri, görselleri, hizmetleri veya e-ticaret
+                                sitelerindeki ürünleri hiçbir teknik bilgiye (kodlama vb.) ihtiyaç duymadan kendiniz
+                                kolayca güncelleyebilirsiniz. Ayrıca teslimat sonrasında yönetim paneli kullanımıyla
+                                ilgili eğitim vermekteyiz.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>Web sitelerinin yıllık yenileme ücretleri ne kadar?</span>
+                            <span class="faq-icon"><i class="bi bi-chevron-down"></i></span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>
+                                İlk yıl hosting (sunucu), SSL sertifikası, alan adı (domain) ve teknik destek hizmetleri
+                                proje fiyatına dahildir. Sonraki yıllarda ise sadece sunucu barındırma, SSL yenileme ve
+                                destek kapsamını içeren yıllık standart yenileme bedeli alınır. Bu ücret projenin
+                                kullandığı sunucu kaynaklarına göre ilk yılın sonunda belirlenir ve fahiş artışlar
+                                içermez.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <div class="container contact-container">
+                <div class="contact-info-side" data-scroll="slide-right">
+                    <span class="section-subtitle text-left">Bizimle İletişime Geçin</span>
+                    <h2 class="section-title text-left">Samsun'daki Ofisimizde Çay İçmeye Bekleriz</h2>
+                    <p class="section-description text-left">
+                        Dijital projelerinizle ilgili her türlü soruyu sormak veya fikir alışverişinde bulunmak için
+                        bizi ziyaret edebilir veya formu doldurarak sizi aramamızı isteyebilirsiniz.
+                    </p>
+
+                    <div class="contact-details">
+                        <div class="detail-item">
+                            <div class="detail-icon"><i class="bi bi-geo-alt"></i></div>
+                            <div class="detail-content">
+                                <h4>Adresimiz</h4>
+                                <p>Kılıçdede Mah. Ülkem Sokak No:8 Borkonut Niş Plaza B Blok Kat:4 D:37, İlkadım /
+                                    Samsun</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon"><i class="bi bi-telephone"></i></div>
+                            <div class="detail-content">
+                                <h4>Telefon / WhatsApp</h4>
+                                <p><a href="tel:05458323929">0545 832 39 29</a> (Webbeyaz Destek)</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon"><i class="bi bi-envelope"></i></div>
+                            <div class="detail-content">
+                                <h4>E-Posta</h4>
+                                <p><a href="mailto:info@webbeyaz.com">info@webbeyaz.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links-side">
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="Linkedin"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form-side" data-scroll="slide-left">
+                    <div class="glass-form-card">
+                        <h3>Sizi Arayalım</h3>
+                        <p>Aşağıdaki bilgileri doldurun, müşteri temsilcimiz en kısa sürede sizinle iletişime geçsin.
+                        </p>
+
+                        <form id="contactForm" class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Adınız Soyadınız / Firma Adınız *</label>
+                                <input type="text" id="name" required placeholder="Örn: Ahmet Yılmaz / Webbeyaz">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefon Numaranız *</label>
+                                <input type="tel" id="phone" required placeholder="Örn: 0545 832 39 29" maxlength="14"
+                                    minlength="11" pattern="([0-9]{11}|[0-9]{4} [0-9]{3} [0-9]{2} [0-9]{2})"
+                                    title="Telefon numarası 11 haneli olmalıdır (örn: 0545 832 39 29)">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-Posta Adresiniz</label>
+                                <input type="email" id="email" placeholder="Örn: info@firma.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Mesajınız *</label>
+                                <textarea id="message" rows="4" required
+                                    placeholder="Nasıl bir projeye ihtiyacınız olduğunu kısaca belirtin..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit-form" id="submitFormBtn">Bilgileri Gönder <i
+                                    class="bi bi-arrow-right"></i></button>
+                        </form>
+
+                        <!-- Success message overlay -->
+                        <div class="form-success-overlay" id="formSuccessOverlay">
+                            <div class="success-message-content">
+                                <div class="success-icon"><i class="bi bi-check2-circle"></i></div>
+                                <h4>Form Başarıyla İletildi!</h4>
+                                <p>Müşteri temsilcimiz en kısa sürede telefon numaranız üzerinden sizinle iletişime
+                                    geçecektir.</p>
+                                <button type="button" class="btn-primary" id="btnResetForm">Yeni Mesaj Gönder</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand-column">
+                <div class="footer-logo">
+                    <svg viewBox="0 0 100 100" class="logo-svg small">
+                        <path d="M15,25 L35,75 L50,45 L65,75 L85,25" fill="none" stroke="url(#logoGrad)"
+                            stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+                        <circle cx="50" cy="20" r="8" fill="#ef4444" />
+                    </svg>
+                    <span><span class="highlight">web</span>samsuntasarım</span>
+                </div>
+                <p class="footer-about-text">
+                    Web Samsun Tasarım, Webbeyaz alt kuruluşu olarak kurumsal işletmelerin dijital dönüşüm süreçlerini
+                    tasarlar ve yönetir.
+                </p>
+                <p class="affiliation-note">
+                    © 2026 Webbeyaz İnternet Hizmetleri Markasıdır.
+                </p>
+            </div>
+
+            <div class="footer-links-column">
+                <h4>Hizmetlerimiz</h4>
+                <a href="#services">Kurumsal Web Tasarım</a>
+                <a href="#services">E-Ticaret Sistemleri</a>
+                <a href="#services">SEO & GEO Çalışmaları</a>
+                <a href="#services">Logo ve Kurumsal Kimlik</a>
+            </div>
+
+            <div class="footer-links-column">
+                <h4>Hızlı Menü</h4>
+                <a href="#hero">Anasayfa</a>
+                <a href="#services">Hizmetlerimiz</a>
+                <a href="#why-us">Neden Biz?</a>
+                <a href="#wizard-section">Teklif Sihirbazı</a>
+                <a href="#faq">Sıkça Sorulan Sorular</a>
+            </div>
+
+            <div class="footer-contact-column">
+                <h4>Ofisimiz</h4>
+                <p><i class="bi bi-geo-alt-fill"></i> Borkonut Niş Plaza B Blok Kat:4 D:37 İlkadım/Samsun</p>
+                <p><i class="bi bi-telephone-fill"></i> <a href="tel:05458323929">0545 832 39 29</a></p>
+                <p><i class="bi bi-envelope-fill"></i> <a href="mailto:info@webbeyaz.com">info@webbeyaz.com</a></p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p>Copyright © 2026 samsunwebtasarim.com. Tüm Hakları Saklıdır.</p>
+                <p class="credits">Geliştirici: <a href="https://webbeyaz.com" target="_blank"
+                        rel="noopener">Webbeyaz</a> | <a href="admin.html"
+                        style="margin-left: 8px; color: var(--text-muted);"><i class="bi bi-gear-fill"></i> Yönetim
+                        Paneli</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/905458323929" class="whatsapp-float" target="_blank" rel="noopener"
+        aria-label="WhatsApp Destek Hattı">
+        <i class="bi bi-whatsapp"></i>
+        <span class="whatsapp-tooltip">Web Samsun Tasarım Destek</span>
+    </a>
+
+    <!-- Supabase Database SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase-config.js"></script>
+
+    <!-- Scroll Motion Engine -->
+    <script src="assets/js/scroll-motion.js"></script>
+
+    <!-- Ana JS Dosyası -->
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

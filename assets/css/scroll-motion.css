@@ -1,0 +1,492 @@
+/* ==========================================================================
+   scroll-motion.css — samsunwebtasarim.com
+   Advanced 3D Creative Motion Engine, Staggered Reveal, Dual Marquee,
+   Character Scroll Reveal, Sticky Stacking Cards & Magnet Physics.
+   ========================================================================== */
+
+:root {
+  --scroll-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --scroll-duration: 900ms;
+}
+
+/* ==========================================================================
+   1. BASE REVEAL & PARALLAX
+   ========================================================================== */
+[data-scroll] {
+  transition:
+    opacity var(--scroll-duration) var(--scroll-ease),
+    transform var(--scroll-duration) var(--scroll-ease),
+    filter var(--scroll-duration) var(--scroll-ease);
+  will-change: opacity, transform, filter;
+}
+
+[data-scroll='fade-up']     { opacity: 0; transform: translateY(48px); }
+[data-scroll='fade-in']     { opacity: 0; }
+[data-scroll='scale']       { opacity: 0; transform: scale(0.85); }
+[data-scroll='slide-left']  { opacity: 0; transform: translateX(-64px); }
+[data-scroll='slide-right'] { opacity: 0; transform: translateX(64px); }
+[data-scroll='blur']        { opacity: 0; filter: blur(14px); }
+
+[data-scroll='clip'] {
+  opacity: 1;
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path var(--scroll-duration) var(--scroll-ease);
+}
+
+[data-scroll].is-visible {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+  clip-path: inset(0 0 0% 0);
+}
+
+[data-parallax] {
+  transform: translate3d(0, var(--parallax-y, 0px), 0);
+  will-change: transform;
+}
+
+/* ==========================================================================
+   2. HERO SECTION & GRADIENT TYPOGRAPHY
+   ========================================================================== */
+.hero-heading {
+  background: linear-gradient(180deg, #FE2000 0%, #FFFFFF 65%, #646973 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Kanit', 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+.hero-sub-text {
+  color: #D7E2EA;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.35;
+  font-size: clamp(0.75rem, 1.4vw, 1.35rem);
+  max-width: 260px;
+}
+
+/* ==========================================================================
+   3. MAGNETIC BUTTON COMPONENT (.btn-magnet)
+   ========================================================================== */
+.btn-magnet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 9999px;
+  background: linear-gradient(123deg, #18011F 7%, #FE2000 37%, #7621B0 72%, #BE4C00 100%);
+  box-shadow: 0px 4px 15px rgba(254, 32, 0, 0.35), inset 4px 4px 12px #7721B1;
+  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline-offset: -3px;
+  color: #FFFFFF;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  will-change: transform;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  padding: 0.85rem 2.25rem;
+  font-size: clamp(0.8rem, 1.1vw, 1rem);
+}
+
+.btn-magnet:hover {
+  box-shadow: 0px 6px 25px rgba(254, 32, 0, 0.6), inset 4px 4px 16px #9b28e4;
+}
+
+.btn-live-project {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 9999px;
+  border: 2px solid #D7E2EA;
+  color: #D7E2EA;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  padding: 0.6rem 1.75rem;
+  font-size: 0.85rem;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.btn-live-project:hover {
+  background-color: rgba(215, 226, 234, 0.15);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   4. DUAL-ROW SCROLL MARQUEE SECTION
+   ========================================================================== */
+.marquee-section {
+  background-color: #0C0C0C;
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-row-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.marquee-row {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+.marquee-tile {
+  width: 380px;
+  height: 240px;
+  flex-shrink: 0;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: #14161B;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.marquee-tile:hover {
+  transform: scale(1.03);
+  border-color: rgba(254, 32, 0, 0.5);
+}
+
+.marquee-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .marquee-tile {
+    width: 440px;
+    height: 270px;
+  }
+}
+
+/* ==========================================================================
+   5. ABOUT SECTION & CHARACTER-BY-CHARACTER SCROLL REVEAL
+   ========================================================================== */
+.about-section-motion {
+  min-height: 90vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 1.5rem;
+  background-color: #0C0C0C;
+  overflow: hidden;
+}
+
+.deco-3d-icon {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  will-change: transform;
+}
+
+.deco-top-left {
+  top: 5%;
+  left: 3%;
+  width: clamp(100px, 14vw, 210px);
+}
+
+.deco-bottom-left {
+  bottom: 8%;
+  left: 4%;
+  width: clamp(90px, 12vw, 180px);
+}
+
+.deco-top-right {
+  top: 5%;
+  right: 3%;
+  width: clamp(100px, 14vw, 210px);
+}
+
+.deco-bottom-right {
+  bottom: 8%;
+  right: 4%;
+  width: clamp(100px, 15vw, 220px);
+}
+
+.char-reveal-paragraph {
+  color: #D7E2EA;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.7;
+  max-width: 680px;
+  font-size: clamp(1.05rem, 2.2vw, 1.45rem);
+  margin-top: 2.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.char-span {
+  opacity: 0.15;
+  transition: opacity 0.25s ease-out, color 0.25s ease-out;
+  display: inline-block;
+}
+
+.char-span.is-lit {
+  opacity: 1;
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   6. NUMBERED SERVICES LIST SECTION (01 - 05)
+   ========================================================================== */
+.services-section-motion {
+  background-color: #FFFFFF;
+  color: #0C0C0C;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  padding: 5rem 1.5rem;
+  position: relative;
+  z-index: 5;
+}
+
+@media (min-width: 768px) {
+  .services-section-motion {
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+    padding: 7rem 3rem;
+  }
+}
+
+.services-motion-heading {
+  color: #0C0C0C;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: clamp(2.8rem, 10vw, 120px);
+  margin-bottom: 3.5rem;
+  line-height: 0.9;
+}
+
+.service-numbered-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(12, 12, 12, 0.15);
+  transition: transform 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .service-numbered-item {
+    flex-direction: row;
+    align-items: center;
+    gap: 3.5rem;
+    padding: 2.75rem 0;
+  }
+}
+
+.service-number {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 8vw, 110px);
+  color: #0C0C0C;
+  line-height: 1;
+  min-width: 130px;
+}
+
+.service-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.service-item-name {
+  font-family: 'Kanit', sans-serif;
+  font-size: clamp(1.2rem, 2.4vw, 2.1rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #0C0C0C;
+}
+
+.service-item-desc {
+  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(12, 12, 12, 0.7);
+  max-width: 650px;
+}
+
+/* ==========================================================================
+   7. STICKY STACKING PROJECT CARDS SECTION
+   ========================================================================== */
+.projects-stack-section {
+  background-color: #0C0C0C;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  margin-top: -2.5rem;
+  position: relative;
+  z-index: 10;
+  padding: 5rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .projects-stack-section {
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+    margin-top: -3.5rem;
+    padding: 7rem 2.5rem;
+  }
+}
+
+.sticky-stack-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.sticky-project-card {
+  position: sticky;
+  top: 90px;
+  background-color: #0C0C0C;
+  border: 2px solid rgba(215, 226, 234, 0.25);
+  border-radius: 32px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  transform-origin: top center;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .sticky-project-card {
+    border-radius: 50px;
+    padding: 2.5rem;
+    top: 110px;
+  }
+}
+
+.card-top-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 1.25rem;
+}
+
+.card-number-badge {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: #FE2000;
+}
+
+.card-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.card-category {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #8E929E;
+}
+
+.card-project-name {
+  font-family: 'Kanit', sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+/* Two-column Image Grid inside Card */
+.card-grid-images {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .card-grid-images {
+    grid-template-columns: 4fr 6fr;
+  }
+}
+
+.col-left-stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.card-img-box {
+  border-radius: 24px;
+  overflow: hidden;
+  background-color: #16181F;
+}
+
+@media (min-width: 768px) {
+  .card-img-box {
+    border-radius: 36px;
+  }
+}
+
+.card-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.card-img-box:hover img {
+  transform: scale(1.04);
+}
+
+.img-left-top {
+  height: clamp(140px, 18vw, 230px);
+}
+
+.img-left-bottom {
+  height: clamp(170px, 22vw, 340px);
+}
+
+.img-right-tall {
+  height: 100%;
+  min-height: clamp(280px, 40vw, 590px);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .btn-magnet,
+  .marquee-row,
+  .char-span,
+  .sticky-project-card {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

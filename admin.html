@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Samsun Tasarım | Yönetim Paneli</title>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- CSS Style Files -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+
+    <!-- Supabase Client Auth Verification -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Hide panel by default to prevent UI flashing
+        document.documentElement.style.display = 'none';
+
+        async function checkAuth() {
+            try {
+                const SUPABASE_URL = "https://pkvxxswogozwmduxdgtc.supabase.co";
+                const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBrdnh4c3dvZ296d21kdXhkZ3RjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQwMTQ2NzksImV4cCI6MjA5OTU5MDY3OX0.h1gDqX6H9dGVUUTfhRostIwovqntWX3n5n_Ztb40IhE";
+
+                const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+                const { data: { session }, error } = await client.auth.getSession();
+                if (session && !error) {
+                    document.documentElement.style.display = '';
+                } else {
+                    window.location.href = 'login.html';
+                }
+            } catch (e) {
+                console.error("Auth Session check failed:", e);
+                window.location.href = 'login.html';
+            }
+        }
+        window.addEventListener('DOMContentLoaded', checkAuth);
+    </script>
+</head>
+
+<body class="admin-body dark-theme">
+
+    <!-- Toast Notification -->
+    <div class="admin-toast" id="adminToast">
+        <i class="bi bi-check-circle-fill"></i>
+        <span id="toastMessage">Ayarlar başarıyla kaydedildi!</span>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="admin-sidebar" aria-label="Yönetici Sidebar Menüsü">
+        <div class="admin-logo">
+            <div class="logo-icon" style="width: 32px; height: 32px;">
+                <svg viewBox="0 0 100 100" class="logo-svg">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ef4444" />
+                            <stop offset="100%" stop-color="#4f46e5" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M15,25 L35,75 L50,45 L65,75 L85,25" fill="none" stroke="url(#logoGrad)" stroke-width="12"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="50" cy="20" r="8" fill="#ef4444" />
+                </svg>
+            </div>
+            <div class="logo-text">
+                <h2>web<span class="highlight">tasarım</span>samsun</h2>
+                <span>Yönetici Paneli</span>
+            </div>
+        </div>
+
+        <nav class="admin-menu" aria-label="Yönetim Menü Linkleri">
+            <div class="admin-menu-link active" data-tab="dashboard">
+                <i class="bi bi-grid-1x2-fill"></i>
+                <span>Genel Bakış</span>
+            </div>
+            <div class="admin-menu-link" data-tab="pricing">
+                <i class="bi bi-currency-dollar"></i>
+                <span>Teklif Fiyat Ayarları</span>
+            </div>
+            <div class="admin-menu-link" data-tab="services-admin">
+                <i class="bi bi-window-stack"></i>
+                <span>Hizmet Yönetimi</span>
+            </div>
+            <div class="admin-menu-link" data-tab="leads">
+                <i class="bi bi-inbox-fill"></i>
+                <span>Gelen Talepler</span>
+            </div>
+            <div class="admin-menu-link" data-tab="projects-admin">
+                <i class="bi bi-kanban-fill"></i>
+                <span>Proje Yönetimi</span>
+            </div>
+        </nav>
+
+        <div class="admin-sidebar-footer" style="display: flex; flex-direction: column; gap: 8px;">
+            <a href="index.html" class="btn-back-site">
+                <i class="bi bi-arrow-left"></i>
+                <span>Siteye Dön</span>
+            </a>
+            <button id="btnAdminLogout" class="btn-back-site"
+                style="background: rgba(239, 68, 68, 0.08); border-color: rgba(239, 68, 68, 0.15); color: #ef4444; justify-content: center; cursor: pointer; border-style: solid; border-width: 1px;">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Oturumu Kapat</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="admin-content">
+
+        <!-- Header -->
+        <header class="admin-header">
+            <div class="admin-title">
+                <h1 id="pageTitle">Yönetim Paneli</h1>
+                <p id="pageSubtitle">Web Samsun Tasarım platform ayarları ve müşteri talepleri.</p>
+            </div>
+
+            <div class="admin-user-info d-desktop">
+                <span class="badge-webbeyaz" style="margin-bottom: 0;" id="dbBadgeStatus">
+                    <span class="badge-dot" style="background-color: var(--color-success);"></span>
+                    Supabase Bağlantısı Aktif
+                </span>
+            </div>
+        </header>
+
+        <!-- ==========================================================================
+           TAB 1: DASHBOARD (OVERVIEW)
+           ========================================================================== -->
+        <section class="admin-tab-panel active" id="tab-dashboard">
+            <!-- Stats Grid -->
+            <div class="admin-stats-grid">
+                <div class="stat-box">
+                    <div class="stat-box-info">
+                        <h3>Toplam Talep</h3>
+                        <div class="value" id="statTotalLeads">0</div>
+                    </div>
+                    <div class="stat-box-icon"><i class="bi bi-chat-left-text"></i></div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-box-info">
+                        <h3>Yeni / Bekleyen</h3>
+                        <div class="value text-red" id="statNewLeads">0</div>
+                    </div>
+                    <div class="stat-box-icon red"><i class="bi bi-envelope-exclamation"></i></div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-box-info">
+                        <h3>Teklif Hacmi</h3>
+                        <div class="value text-green" id="statVolume">0 ₺</div>
+                    </div>
+                    <div class="stat-box-icon green"><i class="bi bi-wallet2"></i></div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-box-info">
+                        <h3>Sistem Durumu</h3>
+                        <div class="value" style="font-size: 20px; font-weight: 700; color: var(--color-success);">
+                            Çevrimiçi</div>
+                    </div>
+                    <div class="stat-box-icon green"><i class="bi bi-check2-all"></i></div>
+                </div>
+            </div>
+
+            <!-- Welcome Board -->
+            <div class="dashboard-row">
+                <div class="admin-card">
+                    <h2><i class="bi bi-info-circle"></i> Web Samsun Tasarım Yönetici Kontrol Paneli</h2>
+                    <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px;">
+                        Hoş geldiniz! Bu panel üzerinden samsunwebtasarim.com sayfanızın hizmet detaylarını
+                        güncelleyebilir, Teklif Sihirbazı'ndaki tüm modüllerin fiyatlandırma politikalarını
+                        belirleyebilir ve sitenizden gelen müşteri taleplerini yönetebilirsiniz.
+                    </p>
+                    <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.7;">
+                        Yaptığınız tüm değişiklikler doğrudan bulut veritabanınıza (**Supabase / PostgreSQL**) veya
+                        yerel yedek belleğe (localStorage) anında işlenir. Müşteri ekranında form gönderildiğinde, bu
+                        paneldeki <strong>Gelen Talepler</strong> sekmesine anlık olarak yansıyacaktır.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           TAB 2: WIZARD PRICING CONFIG
+           ========================================================================== -->
+        <section class="admin-tab-panel" id="tab-pricing">
+            <form id="pricingConfigForm">
+                <!-- Project Type Pricing -->
+                <div class="admin-card">
+                    <h2><i class="bi bi-buildings"></i> 1. Proje Türü Taban Fiyat ve Süre Ayarları</h2>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px; margin-top: -16px;">
+                        Teklif Sihirbazı'nın ilk adımındaki proje türlerinin taban ücretlerini (₺) ve taban teslim
+                        sürelerini (Gün) belirleyin.
+                    </p>
+
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label for="pCorporatePrice">Kurumsal Web Taban Fiyatı (₺)</label>
+                            <input type="number" id="pCorporatePrice" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="pCorporateDays">Kurumsal Web Taban Süresi (Gün)</label>
+                            <input type="number" id="pCorporateDays" required>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label for="pEcommercePrice">E-Ticaret Sitesi Taban Fiyatı (₺)</label>
+                            <input type="number" id="pEcommercePrice" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="pEcommerceDays">E-Ticaret Sitesi Taban Süresi (Gün)</label>
+                            <input type="number" id="pEcommerceDays" required>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label for="pLandingPrice">Tek Sayfa (Landing) Taban Fiyatı (₺)</label>
+                            <input type="number" id="pLandingPrice" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="pLandingDays">Tek Sayfa (Landing) Taban Süresi (Gün)</label>
+                            <input type="number" id="pLandingDays" required>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label for="pCustomPrice">Özel Web Yazılımı Taban Fiyatı (₺)</label>
+                            <input type="number" id="pCustomPrice" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="pCustomDays">Özel Web Yazılımı Taban Süresi (Gün)</label>
+                            <input type="number" id="pCustomDays" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extras & Addons Pricing -->
+                <div class="admin-card">
+                    <h2><i class="bi bi-plus-circle"></i> 2. Ekstra Seçeneklerin Ücretleri</h2>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px; margin-top: -16px;">
+                        Sihirbazın ikinci adımında seçilebilen ekstraların birim fiyatlarını ve ek sürelerini
+                        düzenleyin.
+                    </p>
+
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label for="extDesignPrice">Özgün UI/UX Tasarım Ücreti (₺)</label>
+                            <input type="number" id="extDesignPrice" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="extDesignDays">Özgün Tasarım Ek Süresi (Gün)</label>
+                            <input type="number" id="extDesignDays" required>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label for="extSeoPrice">Profesyonel SEO & GEO Ücreti (₺)</label>
+                            <input type="number" id="extSeoPrice" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="extSeoDays">SEO & GEO Ek Süresi (Gün)</label>
+                            <input type="number" id="extSeoDays" required>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label for="extBrandPrice">Logo & Kurumsal Kimlik Ücreti (₺)</label>
+                            <input type="number" id="extBrandPrice" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="extBrandDays">Logo & Kimlik Ek Süresi (Gün)</label>
+                            <input type="number" id="extBrandDays" required>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label for="extLangPrice">Çoklu Dil Desteği Ücreti (₺)</label>
+                            <input type="number" id="extLangPrice" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="extLangDays">Çoklu Dil Ek Süresi (Gün)</label>
+                            <input type="number" id="extLangDays" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Page Scale Pricing -->
+                <div class="admin-card">
+                    <h2><i class="bi bi-file-earmark-diff"></i> 3. Sayfa Sayısı / Kapsam Ek Bütçe Ayarları</h2>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px; margin-top: -16px;">
+                        Projenin sayfa sayısı büyüklüğüne göre taban ücrete eklenecek ek tutar ve gün sayılarını
+                        düzenleyin.
+                    </p>
+
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label for="scaleSmallPrice">2-5 Sayfa Ek Ücreti (₺)</label>
+                            <input type="number" id="scaleSmallPrice" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="scaleSmallDays">2-5 Sayfa Ek Süresi (Gün)</label>
+                            <input type="number" id="scaleSmallDays" required>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label for="scaleMediumPrice">5-15 Sayfa Ek Ücreti (₺)</label>
+                            <input type="number" id="scaleMediumPrice" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="scaleMediumDays">5-15 Sayfa Ek Süresi (Gün)</label>
+                            <input type="number" id="scaleMediumDays" required>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label for="scaleLargePrice">15+ Sayfa Ek Ücreti (₺)</label>
+                            <input type="number" id="scaleLargePrice" required>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="scaleLargeDays">15+ Sayfa Ek Süresi (Gün)</label>
+                            <input type="number" id="scaleLargeDays" required>
+                        </div>
+                    </div>
+
+                    <div class="admin-card-actions">
+                        <button type="submit" class="btn-admin-save">Fiyat Değişikliklerini Kaydet <i
+                                class="bi bi-floppy-fill"></i></button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- EmailJS Configuration Card -->
+            <form id="emailConfigForm" style="margin-top: 30px;">
+                <div class="admin-card">
+                    <h2><i class="bi bi-envelope-at"></i> 4. E-Posta Gönderim Ayarları (EmailJS)</h2>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px; margin-top: -16px;">
+                        Gelen taleplere doğrudan panel üzerinden cevap yazıp göndermek için EmailJS bilgilerinizi
+                        yapılandırın.
+                    </p>
+
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label for="emailServiceId">EmailJS Service ID</label>
+                            <input type="text" id="emailServiceId" placeholder="Örn: service_xxxxxx">
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="emailTemplateId">EmailJS Template ID</label>
+                            <input type="text" id="emailTemplateId" placeholder="Örn: template_xxxxxx">
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="emailPublicKey">EmailJS Public Key</label>
+                            <input type="text" id="emailPublicKey" placeholder="Örn: user_xxxxxx veya xxxxxxx">
+                        </div>
+                    </div>
+
+                    <div class="admin-card-actions">
+                        <button type="submit" class="btn-admin-save">E-Posta Ayarlarını Kaydet <i
+                                class="bi bi-floppy-fill"></i></button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- ==========================================================================
+           TAB 3: SERVICES EDITOR
+           ========================================================================== -->
+        <section class="admin-tab-panel" id="tab-services-admin">
+            <form id="servicesConfigForm">
+                <div class="admin-card">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+                        <h2><i class="bi bi-window-stack"></i> Hizmet Kartları İçerik Yönetimi</h2>
+                        <div style="display: flex; gap: 10px;">
+                            <button type="button" class="btn-secondary" id="btnResetServices"
+                                style="padding: 8px 16px; font-size: 14px; display: flex; align-items: center; gap: 6px; border-radius: var(--border-radius-md); cursor: pointer; background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid var(--border-color); font-weight: 600;">
+                                <i class="bi bi-arrow-counterclockwise"></i> Varsayılanları Geri Yükle
+                            </button>
+                            <button type="button" class="btn-primary" id="btnAddNewService"
+                                style="padding: 8px 16px; font-size: 14px; display: flex; align-items: center; gap: 6px; border-radius: var(--border-radius-md); border: none; cursor: pointer; background: var(--gradient-hero); color: #fff; font-weight: 700;">
+                                <i class="bi bi-plus-lg"></i> Yeni Hizmet Ekle
+                            </button>
+                        </div>
+                    </div>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px; margin-top: -16px;">
+                        Ana sayfanızdaki hizmet kartlarının başlık, açıklama ve madde özelliklerini düzenleyin.
+                    </p>
+
+                    <!-- Dynamic Service Cards Container -->
+                    <div id="servicesEditorContainer"></div>
+
+                    <div class="admin-card-actions">
+                        <button type="submit" class="btn-admin-save">Hizmet Detaylarını Kaydet <i
+                                class="bi bi-floppy-fill"></i></button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <!-- ==========================================================================
+           TAB 4: LEADS & INQUIRIES LIST (INBOX)
+           ========================================================================== -->
+        <section class="admin-tab-panel" id="tab-leads">
+            <div class="admin-card">
+                <h2><i class="bi bi-inbox-fill"></i> Müşteri Başvuruları ve İletişim Talepleri</h2>
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px; margin-top: -16px;">
+                    Teklif Sihirbazı ve İletişim formundan gelen müşteri verilerini inceleyin, silin veya arşivleyin.
+                </p>
+
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Müşteri / Firma</th>
+                                <th scope="col">Kanal</th>
+                                <th scope="col">Hesaplanan Bütçe / Konu</th>
+                                <th scope="col">Tarih</th>
+                                <th scope="col">Durum</th>
+                                <th scope="col" style="text-align: right;">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leadsTableBody">
+                            <!-- Dynamically loaded rows -->
+                            <tr>
+                                <td colspan="6" style="text-align: center; color: var(--text-muted);">
+                                    Henüz gelen bir müşteri talebi bulunmamaktadır.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+           TAB 5: PROJECT MANAGEMENT (CRUD)
+           ========================================================================== -->
+        <section class="admin-tab-panel" id="tab-projects-admin">
+            <div class="admin-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <h2><i class="bi bi-kanban-fill"></i> Portfolyo Proje Yönetimi</h2>
+                        <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">
+                            Ana sayfadaki Sticky Stacking Proje vitrininde yayınlanacak projelerinizi ekleyin, düzenleyin veya silin.
+                        </p>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button type="button" class="btn-secondary" id="btnResetProjects"
+                            style="padding: 8px 16px; font-size: 14px; display: flex; align-items: center; gap: 6px; border-radius: var(--border-radius-md); cursor: pointer; background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid var(--border-color); font-weight: 600;">
+                            <i class="bi bi-arrow-counterclockwise"></i> Varsayılan Projeleri Yükle
+                        </button>
+                        <button type="button" class="btn-primary" id="btnAddNewProject"
+                            style="padding: 8px 16px; font-size: 14px; display: flex; align-items: center; gap: 6px; border-radius: var(--border-radius-md); border: none; cursor: pointer; background: var(--gradient-hero); color: #fff; font-weight: 700;">
+                            <i class="bi bi-plus-lg"></i> Yeni Proje Ekle
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Proje Adı</th>
+                                <th scope="col">Kategori & Tür</th>
+                                <th scope="col">Durum</th>
+                                <th scope="col">Görseller</th>
+                                <th scope="col" style="text-align: right;">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectsTableBody">
+                            <tr>
+                                <td colspan="6" style="text-align: center; color: var(--text-muted);">
+                                    Projeler yükleniyor...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            <!-- Marquee Showcase Image Manager Card -->
+            <div class="admin-card" style="margin-top: 32px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+                    <div>
+                        <h2><i class="bi bi-images"></i> Kayan Vitrin (Marquee) Görsel Yönetimi</h2>
+                        <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">
+                            Ana sayfadaki çift yönlü kayan şerit alanında (Row 1 ve Row 2) gösterilecek önizleme görsellerini ekleyin, düzenleyin veya silin.
+                        </p>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button type="button" class="btn-secondary" id="btnResetMarquee"
+                            style="padding: 8px 16px; font-size: 14px; display: flex; align-items: center; gap: 6px; border-radius: var(--border-radius-md); cursor: pointer; background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid var(--border-color); font-weight: 600;">
+                            <i class="bi bi-arrow-counterclockwise"></i> Varsayılan Görselleri Yükle
+                        </button>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                    <!-- Row 1 Container -->
+                    <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                            <h3 style="font-size: 16px; font-weight: 700; color: #fff;"><i class="bi bi-arrow-right-circle-fill" style="color: #FE2000;"></i> Sıra 1 (Sağa Kayan Görseller)</h3>
+                            <button type="button" id="btnAddMarqueeRow1" style="padding: 4px 12px; font-size: 12px; border-radius: 6px; background: rgba(254,32,0,0.2); color: #FE2000; border: 1px solid rgba(254,32,0,0.3); cursor: pointer; font-weight: 600;">+ Görsel Ekle</button>
+                        </div>
+                        <div id="marqueeRow1Container" style="display: flex; flex-direction: column; gap: 10px; max-height: 400px; overflow-y: auto;">
+                            <!-- Dynamic Row 1 Items -->
+                        </div>
+                    </div>
+
+                    <!-- Row 2 Container -->
+                    <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 16px; padding: 20px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                            <h3 style="font-size: 16px; font-weight: 700; color: #fff;"><i class="bi bi-arrow-left-circle-fill" style="color: #4f46e5;"></i> Sıra 2 (Sola Kayan Görseller)</h3>
+                            <button type="button" id="btnAddMarqueeRow2" style="padding: 4px 12px; font-size: 12px; border-radius: 6px; background: rgba(79,70,229,0.2); color: #818cf8; border: 1px solid rgba(79,70,229,0.3); cursor: pointer; font-weight: 600;">+ Görsel Ekle</button>
+                        </div>
+                        <div id="marqueeRow2Container" style="display: flex; flex-direction: column; gap: 10px; max-height: 400px; overflow-y: auto;">
+                            <!-- Dynamic Row 2 Items -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-card-actions" style="margin-top: 24px;">
+                    <button type="button" id="btnSaveMarquee" class="btn-admin-save">Kayan Vitrin Görsellerini Kaydet <i class="bi bi-floppy-fill"></i></button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal for Adding / Editing Project -->
+    <div class="admin-modal-overlay" id="projectModalOverlay" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 9999; justify-content: center; align-items: center; padding: 20px;">
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--border-radius-lg); max-width: 650px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 28px; box-shadow: 0 20px 50px rgba(0,0,0,0.8);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">
+                <h3 id="projectModalTitle" style="color: #fff; font-size: 20px; font-weight: 700;">Yeni Proje Ekle</h3>
+                <button type="button" id="btnCloseProjectModal" style="background: none; border: none; color: #8E929E; font-size: 24px; cursor: pointer;">&times;</button>
+            </div>
+            <form id="projectForm">
+                <input type="hidden" id="projectId">
+
+                <div class="admin-form-group" style="margin-bottom: 16px; display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.03); padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <input type="checkbox" id="projectVisible" checked style="width: 18px; height: 18px; cursor: pointer; accent-color: #FE2000;">
+                    <label for="projectVisible" style="cursor: pointer; font-weight: 600; color: #fff; margin: 0;">Bu Proje Ana Sayfada Yayınlansın (Aktif)</label>
+                </div>
+
+                <div class="admin-form-group" style="margin-bottom: 16px;">
+                    <label for="projectNumber">Sıra / Rozet Numarası (Örn: 01, 02)</label>
+                    <input type="text" id="projectNumber" class="form-input" required placeholder="01" style="width: 100%; padding: 10px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: #fff;">
+                </div>
+                <div class="admin-form-group" style="margin-bottom: 16px;">
+                    <label for="projectName">Proje Adı</label>
+                    <input type="text" id="projectName" class="form-input" required placeholder="Nextlevel Studio" style="width: 100%; padding: 10px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: #fff;">
+                </div>
+                <div class="admin-form-group" style="margin-bottom: 16px;">
+                    <label for="projectCategory">Kategori / Açıklama Etiketi</label>
+                    <input type="text" id="projectCategory" class="form-input" required placeholder="Müşteri Projesi • E-Ticaret & Web App" style="width: 100%; padding: 10px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: #fff;">
+                </div>
+
+                <!-- Drag Drop Görsel 1 -->
+                <div class="admin-form-group" style="margin-bottom: 18px;">
+                    <label>Sol Üst Görsel (Küçük)</label>
+                    <div class="drag-drop-zone" id="dropzoneImg1" data-input="projectImg1" data-preview="previewImg1" style="border: 2px dashed rgba(255,255,255,0.15); border-radius: 12px; padding: 16px; text-align: center; background: rgba(255,255,255,0.02); cursor: pointer; transition: all 0.2s ease;">
+                        <input type="file" class="dropzone-file-input" accept="image/*" style="display: none;">
+                        <div class="dropzone-content">
+                            <i class="bi bi-cloud-arrow-up" style="font-size: 28px; color: #FE2000;"></i>
+                            <p style="font-size: 13px; margin-top: 6px; color: #cbd5e1;">Resmi buraya sürükleyip bırakın veya <b>dosya seçmek için tıklayın</b></p>
+                        </div>
+                        <img id="previewImg1" class="dropzone-preview" style="display: none; max-height: 90px; margin: 10px auto 0 auto; border-radius: 8px; border: 1px solid var(--border-color);">
+                    </div>
+                    <input type="text" id="projectImg1" class="form-input" required placeholder="veya Resim URL'si girin..." style="margin-top: 8px; font-size: 12px; width: 100%; padding: 8px; border-radius: 6px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); color: #fff;">
+                </div>
+
+                <!-- Drag Drop Görsel 2 -->
+                <div class="admin-form-group" style="margin-bottom: 18px;">
+                    <label>Sol Alt Görsel (Orta)</label>
+                    <div class="drag-drop-zone" id="dropzoneImg2" data-input="projectImg2" data-preview="previewImg2" style="border: 2px dashed rgba(255,255,255,0.15); border-radius: 12px; padding: 16px; text-align: center; background: rgba(255,255,255,0.02); cursor: pointer; transition: all 0.2s ease;">
+                        <input type="file" class="dropzone-file-input" accept="image/*" style="display: none;">
+                        <div class="dropzone-content">
+                            <i class="bi bi-cloud-arrow-up" style="font-size: 28px; color: #FE2000;"></i>
+                            <p style="font-size: 13px; margin-top: 6px; color: #cbd5e1;">Resmi buraya sürükleyip bırakın veya <b>dosya seçmek için tıklayın</b></p>
+                        </div>
+                        <img id="previewImg2" class="dropzone-preview" style="display: none; max-height: 90px; margin: 10px auto 0 auto; border-radius: 8px; border: 1px solid var(--border-color);">
+                    </div>
+                    <input type="text" id="projectImg2" class="form-input" required placeholder="veya Resim URL'si girin..." style="margin-top: 8px; font-size: 12px; width: 100%; padding: 8px; border-radius: 6px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); color: #fff;">
+                </div>
+
+                <!-- Drag Drop Görsel 3 -->
+                <div class="admin-form-group" style="margin-bottom: 18px;">
+                    <label>Sağ Dikey Görsel (Büyük)</label>
+                    <div class="drag-drop-zone" id="dropzoneImg3" data-input="projectImg3" data-preview="previewImg3" style="border: 2px dashed rgba(255,255,255,0.15); border-radius: 12px; padding: 16px; text-align: center; background: rgba(255,255,255,0.02); cursor: pointer; transition: all 0.2s ease;">
+                        <input type="file" class="dropzone-file-input" accept="image/*" style="display: none;">
+                        <div class="dropzone-content">
+                            <i class="bi bi-cloud-arrow-up" style="font-size: 28px; color: #FE2000;"></i>
+                            <p style="font-size: 13px; margin-top: 6px; color: #cbd5e1;">Resmi buraya sürükleyip bırakın veya <b>dosya seçmek için tıklayın</b></p>
+                        </div>
+                        <img id="previewImg3" class="dropzone-preview" style="display: none; max-height: 90px; margin: 10px auto 0 auto; border-radius: 8px; border: 1px solid var(--border-color);">
+                    </div>
+                    <input type="text" id="projectImg3" class="form-input" required placeholder="veya Resim URL'si girin..." style="margin-top: 8px; font-size: 12px; width: 100%; padding: 8px; border-radius: 6px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); color: #fff;">
+                </div>
+
+                <div class="admin-form-group" style="margin-bottom: 24px;">
+                    <label for="projectLink">Canlı Link / Detay Bağlantısı (Opsiyonel)</label>
+                    <input type="text" id="projectLink" class="form-input" placeholder="#wizard-section" style="width: 100%; padding: 10px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: #fff;">
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 12px;">
+                    <button type="button" id="btnCancelProjectModal" class="btn-secondary" style="padding: 10px 20px; border-radius: 8px; cursor: pointer; background: rgba(255,255,255,0.05); color: #fff; border: 1px solid var(--border-color);">İptal</button>
+                    <button type="submit" class="btn-primary" style="padding: 10px 24px; border-radius: 8px; cursor: pointer; background: var(--gradient-hero); border: none; color: #fff; font-weight: 700;">Projeyi Kaydet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Supabase SDK & Config Client Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase-config.js"></script>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="assets/js/admin.js"></script>
+</body>
+
+</html>
