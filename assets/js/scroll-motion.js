@@ -216,14 +216,15 @@
       if (!this._stickyCards.length) return;
 
       const vh = window.innerHeight;
+      const stickyThreshold = 95;
 
       this._stickyCards.forEach(({ el, index, total }) => {
         const rect = el.getBoundingClientRect();
         // Check if card is stuck or being scrolled over by next cards
-        if (rect.top <= 120 && index < total - 1) {
+        if (rect.top <= stickyThreshold && index < total - 1) {
           const nextCard = this._stickyCards[index + 1].el;
           const nextRect = nextCard.getBoundingClientRect();
-          const overlap = 120 - nextRect.top;
+          const overlap = stickyThreshold - nextRect.top;
           if (overlap > 0) {
             const shrinkRatio = Math.min(1, overlap / (vh * 0.6));
             const targetScale = 1 - shrinkRatio * 0.05 - (total - 1 - index) * 0.02;
