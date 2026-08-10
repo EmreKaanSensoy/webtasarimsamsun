@@ -437,6 +437,8 @@
 @media (min-width: 768px) {
   .card-grid-images {
     grid-template-columns: 4fr 6fr;
+    height: clamp(230px, 33vh, 310px);
+    align-items: stretch;
   }
 }
 
@@ -444,6 +446,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  height: 100%;
 }
 
 .card-img-box {
@@ -470,20 +473,40 @@
   transform: scale(1.04);
 }
 
-.img-left-top {
-  height: clamp(75px, 10vh, 125px);
+@media (min-width: 768px) {
+  .img-left-top {
+    flex: 4;
+    height: auto;
+    min-height: 0;
+  }
+
+  .img-left-bottom {
+    flex: 6;
+    height: auto;
+    min-height: 0;
+  }
+
+  .img-right-tall {
+    height: 100%;
+    min-height: 0;
+  }
 }
 
-.img-left-bottom {
-  height: clamp(85px, 13vh, 155px);
+@media (max-width: 767px) {
+  .img-left-top {
+    height: 110px;
+  }
+
+  .img-left-bottom {
+    height: 130px;
+  }
+
+  .img-right-tall {
+    height: 170px;
+  }
 }
 
-.img-right-tall {
-  height: 100%;
-  min-height: 0;
-}
-
-@media (max-height: 720px) {
+@media (max-height: 720px) and (min-width: 768px) {
   .sticky-project-card {
     top: 62px;
     padding: 0.85rem 1.25rem;
@@ -494,12 +517,8 @@
     padding-bottom: 0.35rem;
   }
 
-  .img-left-top {
-    height: clamp(65px, 9vh, 100px);
-  }
-
-  .img-left-bottom {
-    height: clamp(75px, 11vh, 120px);
+  .card-grid-images {
+    height: clamp(190px, 27vh, 240px);
   }
 }
 
